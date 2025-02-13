@@ -1,8 +1,9 @@
 // Importerar komponenter, CSS och nödvändiga paket från React.
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { useState, useEffect } from "react";
+import Todo from "./components/Todo";
 import "./App.css";
+import { useState, useEffect } from "react";
 
 // Skapar ett interface för strukturen på att göra-uppgifter.
 interface TodoInterface {
@@ -19,7 +20,7 @@ function App() {
 
   // States för komponenten.
   const [todos, setTodos] = useState<TodoInterface[] | []>([])
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
 
   // Anropar inhämtningsfunktionen.
@@ -46,7 +47,7 @@ function App() {
       const data = await res.json();
 
       // Kontrollerar att datan faktiskt hämtas (vilket den gör).
-      console.log(data);
+      setTodos(data);
 
       // Felkontroll vid inhämtningsfel.
     } catch (error) {
@@ -64,9 +65,18 @@ function App() {
       <Header webtitle={appname} />
       <main>
 
-        {loading && <p>Laddar todos...</p>}
-
+        { /* Felmeddelanden. */ }
+        {loading && <p>Laddar att göra-uppgifter...</p>}
         {error && <p>{error}</p>}
+
+        <div className="todos">
+        {
+          // Loopar igenom att göra-uppgifter och skriver ut enligt return i Todo-komponenten.
+          todos.map((todo) => (
+            <Todo todo={todo} key={todo._id}/>
+          ))
+        }
+      </div>
 
       </main>
       <Footer />

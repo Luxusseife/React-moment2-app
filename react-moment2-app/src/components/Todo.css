@@ -1,0 +1,25 @@
+/* Sektioner med att-göra uppgifter. Flexad kolumn. */
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(232, 232, 232);
+    margin: 1rem auto;
+    border: 2px solid rgb(162, 162, 162);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Artiklar med uppgifts-titel och beskrivning. */
+article {
+    padding: 1rem;
+}
+
+article p {
+    line-height: 1.6;
+}
+
+/* Status på uppgiften. */
+span {
+    padding: 1rem;
+}

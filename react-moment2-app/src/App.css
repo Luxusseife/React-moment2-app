@@ -5,24 +5,26 @@
     box-sizing: border-box;
 }
 
-/* Sätter bakgrundsfärg och font. */
+/* Bodyns bakgrundsfärg och font. */
 html,
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', Geneva, Verdana, sans-serif;
     background-color: whitesmoke;
+    color: rgb(41, 41, 41);
 }
 
-/* Main, minsta höjd 100vh för att footer ska ligga längst ner. */
+/* Main-innehållet, minsta höjd 100vh för att footer ska ligga längst ner. */
 main {
     min-height: 100vh;
 }
 
-/* Rubriker h2-h3 och brödtext. */
+/* Rubriker h2-h3 och brödtext (ej i sektioner). */
 h2, h3 {
-    text-align: center;
+    text-align: left;
+    margin-bottom: 1.5rem;
 }
 
-p {
+p:not(section p) {
     text-align: center;
     margin: 2rem auto;
 }
