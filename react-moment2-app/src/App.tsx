@@ -73,7 +73,7 @@ function App() {
         {
           // Loopar igenom att göra-uppgifter och skriver ut enligt return i Todo-komponenten.
           todos.map((todo) => (
-            <Todo todo={todo} key={todo._id}/>
+            <Todo todo={todo} key={todo._id} onUpdate={fetchData} />
           ))
         }
       </div>

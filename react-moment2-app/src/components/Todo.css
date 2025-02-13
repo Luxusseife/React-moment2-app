@@ -7,7 +7,7 @@ section {
     border: 2px solid rgb(162, 162, 162);
     border-radius: 5px;
     width: 100%;
-    max-width: 500px;
+    max-width: 750px;
 }
 
 /* Artiklar med uppgifts-titel och beskrivning. */
@@ -22,4 +22,18 @@ article p {
 /* Status på uppgiften. */
 span {
     padding: 1rem;
+}
+
+.line {
+    border-bottom: 2px solid rgb(162, 162, 162);
+    padding: 0.5rem;
+}
+
+form {
+    line-height: 1.6;
+}
+
+form select {
+    height: 25px;
+    width: 120px;
 }
