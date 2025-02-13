@@ -1,52 +1,55 @@
 /* Sektioner med att-göra uppgifter. Flexad kolumn. */
-section {
+.todo-section {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #ffffff;
     margin: 2rem auto;
-    border: 3px solid rgb(162, 162, 162);
+    border: 3px solid #a2a2a2;
     border-radius: 5px;
     width: 100%;
     max-width: 600px;
 }
 
 /* Artiklar med uppgifts-titel och beskrivning. */
-article {
+.todo-section article {
     padding: 1rem;
 }
 
-article p {
+.todo-section article p {
     line-height: 1.6;
 }
 
 /* Status på uppgiften. */
-span {
+.todo-section span {
     padding: 1rem;
 }
 
 /* Avskiljarlinje. */
 .line {
-    border-bottom: 3px solid rgb(162, 162, 162);
-    padding: 0.5rem;
+    border-bottom: 3px solid #a2a2a2;
+    padding: 1rem 0 0 0;
 }
 
 /* Formulär för att ändra status och radera todo. */
-form {
+.status-delete-form {
     display: flex;
     flex-direction: row;
     gap: 2.5rem;
     line-height: 1.6;
+    background-color: #c0c9ae;
 }
 
 /* Utseende på select-box och knapp. */
-form select, button {
-    height: 25px;
+.status-delete-form select, button {
+    height: 30px;
     width: 120px;
     border-radius: 5px;
+    margin-top: 5px;
 }
 
 /* Radera-knapp. */
-button {
+.status-delete-form button {
     border: none;
-    background-color: rgb(243, 94, 94);
+    font-weight: bold;
+    background-color: #f35e5e;
 }

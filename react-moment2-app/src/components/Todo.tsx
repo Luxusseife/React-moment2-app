@@ -5,7 +5,7 @@ import "./Todo.css";
 const Todo = ({ todo, onUpdate }: { todo: any, onUpdate: Function }) => {
 
     // Hanterar statusfärg med en ternär operator.
-    const statusColor = todo.status === "Ej påbörjad" ? "red" : todo.status === "Pågående" ? "orange" : "green";
+    const statusColor = todo.status === "Ej påbörjad" ? "red" : todo.status === "Pågående" ? "sienna" : "green";
 
     // Asynkron funktion som hanterar statusändringar.
     const updateTodo = async (e: any) => {
@@ -72,7 +72,7 @@ const Todo = ({ todo, onUpdate }: { todo: any, onUpdate: Function }) => {
 
     // Komponenten returnerar en sektion innehållandes en artikel och en span.
     return (
-        <section>
+        <section className="todo-section">
             <div>
                 <article>
                     <h2>{todo.title}</h2>
@@ -84,7 +84,7 @@ const Todo = ({ todo, onUpdate }: { todo: any, onUpdate: Function }) => {
 
             <div className="line"></div>
 
-            <form style={{ marginTop: "1rem", padding: "0 1rem 1rem 1rem" }}>
+            <form className="status-delete-form" style={{ padding: "1rem" }}>
                 <div><label htmlFor="status"><strong>Ändra status: </strong></label>
                     <br />
                     <select name="status" id="status" defaultValue={todo.status}
@@ -97,7 +97,7 @@ const Todo = ({ todo, onUpdate }: { todo: any, onUpdate: Function }) => {
                 <div>
                     <p><strong>Radera todo: </strong></p>
                     <button type="button" onClick={deleteTodo}
-                        style={{ cursor: "pointer" }}><strong>Radera</strong></button>
+                        style={{ cursor: "pointer" }}>Radera</button>
                 </div>
             </form>
 

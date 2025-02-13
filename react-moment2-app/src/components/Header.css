@@ -1,7 +1,7 @@
 /* Hanterar h1 i headern. */
 h1 {
     text-align: center;
-    background-color: darkolivegreen;
+    background-color: #556b2f;
     color: white;
     padding: 2rem;
 }

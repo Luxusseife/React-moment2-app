@@ -2,6 +2,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Todo from "./components/Todo";
+import NewTodoForm from "./components/NewTodoForm";
 import "./App.css";
 import { useState, useEffect } from "react";
 
@@ -68,6 +69,8 @@ function App() {
         { /* Felmeddelanden. */ }
         {loading && <p>Laddar att göra-uppgifter...</p>}
         {error && <p>{error}</p>}
+
+        <NewTodoForm />
 
         <div className="todos">
         {

@@ -1,0 +1,60 @@
+/* Sektioner med formulär för att skapa ny att göra-uppgift. Flexad kolumn. */
+.create-section {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    margin: 2rem auto;
+    border: 3px solid #556b2f;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Formulär för att skapa ny uppgift. Flexad kolumn. */
+.create-new-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+/* Labels i formuläret är fetstilta. */
+.create-new-form label {
+    font-weight: bold;
+}
+
+/* Gemensam style för input, textarea och select. */
+.create-new-form input, textarea, select {
+    margin-top: -0.75rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Gemensam style för input och textarea. */
+.create-new-form input, textarea {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', Geneva, Verdana, sans-serif;
+    padding: 5px;
+}
+
+/* Gemensam style för input och select. */
+.create-new-form input, select {
+    height: 30px;
+}
+
+/* Individuell style för delar av formuläret. */
+.create-new-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.create-new-form select {
+    margin: 10px 0;
+}
+
+.create-new-form button {
+    height: 30px;
+    width: 120px;
+    background-color: #556b2f;
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+}
