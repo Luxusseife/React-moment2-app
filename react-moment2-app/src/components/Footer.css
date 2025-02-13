@@ -1,0 +1,9 @@
+/* Flexad footer med centrerat innehåll. */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkolivegreen;
+    color: #ffffff;
+    height: 65px;
+}

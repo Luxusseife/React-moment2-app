@@ -1,0 +1,28 @@
+/* Normalisering. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sätter bakgrundsfärg och font. */
+html,
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', Geneva, Verdana, sans-serif;
+    background-color: whitesmoke;
+}
+
+/* Main, minsta höjd 100vh för att footer ska ligga längst ner. */
+main {
+    min-height: 100vh;
+}
+
+/* Rubriker h2-h3 och brödtext. */
+h2, h3 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin: 2rem auto;
+}
