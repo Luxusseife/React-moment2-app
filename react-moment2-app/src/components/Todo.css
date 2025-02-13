@@ -2,12 +2,12 @@
 section {
     display: flex;
     flex-direction: column;
-    background-color: rgb(232, 232, 232);
-    margin: 1rem auto;
-    border: 2px solid rgb(162, 162, 162);
+    background-color: white;
+    margin: 2rem auto;
+    border: 3px solid rgb(162, 162, 162);
     border-radius: 5px;
     width: 100%;
-    max-width: 750px;
+    max-width: 600px;
 }
 
 /* Artiklar med uppgifts-titel och beskrivning. */
@@ -24,16 +24,29 @@ span {
     padding: 1rem;
 }
 
+/* Avskiljarlinje. */
 .line {
-    border-bottom: 2px solid rgb(162, 162, 162);
+    border-bottom: 3px solid rgb(162, 162, 162);
     padding: 0.5rem;
 }
 
+/* Formulär för att ändra status och radera todo. */
 form {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
     line-height: 1.6;
 }
 
-form select {
+/* Utseende på select-box och knapp. */
+form select, button {
     height: 25px;
     width: 120px;
+    border-radius: 5px;
+}
+
+/* Radera-knapp. */
+button {
+    border: none;
+    background-color: rgb(243, 94, 94);
 }

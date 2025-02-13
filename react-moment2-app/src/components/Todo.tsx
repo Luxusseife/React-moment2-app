@@ -42,6 +42,34 @@ const Todo = ({ todo, onUpdate }: { todo: any, onUpdate: Function }) => {
         }
     }
 
+    // Asynkron funktion som hanterar radering av att göra-uppgifter.
+    const deleteTodo = async () => {
+
+        // Gör ett anrop mot API:et med metoden DELETE (radering).
+        try {
+            const res = await fetch("https://react-moment2-api.onrender.com/todo/" + todo._id, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            });
+
+            // Felkontroll vid oväntat svar.
+            if (!res.ok) {
+                throw Error("Fel uppstod vid radering av todo: " + res.status);
+            }
+
+            // TEST: console.log("Raderad todo: " + todo._id);
+
+            // Anropar fetchData-funktionen i App-komponenten för att rendera om.
+            onUpdate();
+
+            // Felkontroll vid inhämtningsfel.
+        } catch (error) {
+            console.error("Fel uppstod vid inhämtning av todos: " + error);
+        }
+    }
+
     // Komponenten returnerar en sektion innehållandes en artikel och en span.
     return (
         <section>
@@ -55,17 +83,24 @@ const Todo = ({ todo, onUpdate }: { todo: any, onUpdate: Function }) => {
             </div>
 
             <div className="line"></div>
-            
+
             <form style={{ marginTop: "1rem", padding: "0 1rem 1rem 1rem" }}>
-                <label htmlFor="status"><strong>Ändra status: </strong></label>
-                <br />
-                <select name="status" id="status" defaultValue={todo.status}
-                    onChange={updateTodo}>
-                    <option>Ej påbörjad</option>
-                    <option>Pågående</option>
-                    <option>Avklarad</option>
-                </select>
+                <div><label htmlFor="status"><strong>Ändra status: </strong></label>
+                    <br />
+                    <select name="status" id="status" defaultValue={todo.status}
+                        onChange={updateTodo}>
+                        <option>Ej påbörjad</option>
+                        <option>Pågående</option>
+                        <option>Avklarad</option>
+                    </select>
+                </div>
+                <div>
+                    <p><strong>Radera todo: </strong></p>
+                    <button type="button" onClick={deleteTodo}
+                        style={{ cursor: "pointer" }}><strong>Radera</strong></button>
+                </div>
             </form>
+
         </section>
     )
 }
