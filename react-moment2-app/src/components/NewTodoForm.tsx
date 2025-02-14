@@ -1,7 +1,9 @@
+// Importerar CSS, nödvändigt paket från React samt skapat interface.
 import "./NewTodoForm.css"
 import { useState } from "react"
 import { TodoInterface } from "../App";
 
+// Funktion som hanterar lägg till-formuläret. Tar emot props från huvudkomponenten.
 const NewTodoForm = ({ onAdd }: { onAdd: (todo: TodoInterface) => void }) => {
 
     // States för komponenten. Status har defaultvärde "Ej påbörjad".
