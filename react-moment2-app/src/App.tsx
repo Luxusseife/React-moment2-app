@@ -36,6 +36,9 @@ function App() {
       // Sätter laddnings-state till true.
       setLoading(true);
 
+      // Återställer felmeddelanden.
+      setError(null);
+
       // Anropet. Görs med fetchAPI.
       const res = await fetch("https://react-moment2-api.onrender.com/todo");
 
@@ -48,11 +51,11 @@ function App() {
       const data = await res.json();
 
       // Kontrollerar att uppgifter finns lagrade och sätter state därefter.
-      // Om listan är tom, sätts state till en tom array och info ges.
-      if (data.length === 0) {
-        setTodos([]); 
+      // Om listan returneras tom från API:et, sätts state till en tom array och info ges.
+      if (data.message === "No todos found") {
+        setTodos([]);
         setError("Inga att göra-uppgifter finns lagrade.");
-      // Om uppgifter finns lagrade, sätts state till data och felmeddelandet tas bort.
+        // Om uppgifter finns lagrade, sätts state till data och felmeddelandet tas bort.
       } else {
         setTodos(data);
         setError(null);
@@ -67,27 +70,27 @@ function App() {
       setLoading(false);
     }
   }
-
+  
   // Huvudkomponenten returnerar en header, ett main och en footer.
   return (
     <>
       <Header webtitle={appname} />
       <main>
 
-        { /* Felmeddelanden. */ }
-        {loading && <p>Laddar att göra-uppgifter...</p>}
-        {error && <p>{error}</p>}
-
-        <NewTodoForm onAdd={fetchData}/>
+        <NewTodoForm onAdd={fetchData} />
 
         <div className="todos">
-        {
-          // Loopar igenom att göra-uppgifter och skriver ut enligt return i Todo-komponenten.
-          todos.map((todo) => (
-            <Todo todo={todo} key={todo._id} onUpdate={fetchData} />
-          ))
-        }
-      </div>
+          {
+            // Loopar igenom att göra-uppgifter och skriver ut enligt return i Todo-komponenten.
+            todos.map((todo) => (
+              <Todo todo={todo} key={todo._id} onUpdate={fetchData} />
+            ))
+          }
+        </div>
+
+        { /* Felmeddelanden. */}
+        {loading && <p>Laddar att göra-uppgifter...</p>}
+        {error && <p>{error}</p>}
 
       </main>
       <Footer />
