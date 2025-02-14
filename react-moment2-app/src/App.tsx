@@ -7,8 +7,8 @@ import "./App.css";
 import { useState, useEffect } from "react";
 
 // Skapar ett interface för strukturen på att göra-uppgifter.
-interface TodoInterface {
-  _id: string,
+export interface TodoInterface {
+  _id?: string,
   title: string,
   description?: string,
   status: string
@@ -47,8 +47,16 @@ function App() {
       // Fortsättning på anropet - hämtar ut data.
       const data = await res.json();
 
-      // Kontrollerar att datan faktiskt hämtas (vilket den gör).
-      setTodos(data);
+      // Kontrollerar att uppgifter finns lagrade och sätter state därefter.
+      // Om listan är tom, sätts state till en tom array och info ges.
+      if (data.length === 0) {
+        setTodos([]); 
+        setError("Inga att göra-uppgifter finns lagrade.");
+      // Om uppgifter finns lagrade, sätts state till data och felmeddelandet tas bort.
+      } else {
+        setTodos(data);
+        setError(null);
+      }
 
       // Felkontroll vid inhämtningsfel.
     } catch (error) {
@@ -70,7 +78,7 @@ function App() {
         {loading && <p>Laddar att göra-uppgifter...</p>}
         {error && <p>{error}</p>}
 
-        <NewTodoForm />
+        <NewTodoForm onAdd={fetchData}/>
 
         <div className="todos">
         {
