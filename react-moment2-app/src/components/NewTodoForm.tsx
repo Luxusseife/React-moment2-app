@@ -44,6 +44,11 @@ const NewTodoForm = ({ onAdd }: { onAdd: (todo: TodoInterface) => void }) => {
             // Anropar fetchData-funktionen i App-komponenten för att rendera om.
             onAdd(data);
 
+            // Återställer formuläret efter lyckad lagring.
+            setTitle("");
+            setDescription("");
+            setStatus("Ej påbörjad");
+
             // Felkontroll vid inhämtningsfel.
         } catch (error) {
             console.error("Fel uppstod vid inhämtning av todos: " + error);
