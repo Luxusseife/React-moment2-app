@@ -8,11 +8,24 @@ const NewTodoForm = ({ onAdd }: { onAdd: (todo: TodoInterface) => void }) => {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [status, setStatus] = useState("Ej påbörjad")
+    const [error, setError] = useState<string>("");
 
     // Funktion som lägger till en ny att göra-uppgift.
     const addTodo = async (e: React.FormEvent<HTMLFormElement>) => {
         // Förhindrar default-beteende.
         e.preventDefault();
+
+        // Validerar titel. Minst 3 tecken lång.
+        if (title.length < 3) {
+            setError("Titel måste vara minst 3 tecken lång!");
+            return;
+        }
+
+        // Validerar beskrivning. Max 200 tecken lång.
+        if (description.length > 200) {
+            setError("Beskrivning får max vara 200 tecken lång!");
+            return;
+        }
 
         // Skapar ett nytt objekt enligt interfacet, men utan _id som genereras automatiskt vid lagring.
         const newTodo: TodoInterface = {
@@ -63,13 +76,13 @@ const NewTodoForm = ({ onAdd }: { onAdd: (todo: TodoInterface) => void }) => {
                 <form className="create-new-form" onSubmit={addTodo}>
                     <label htmlFor="title">Titel:</label>
                     <br />
-                    <input type="text" name="title" placeholder="Ge uppgiften en titel" value={title} required
+                    <input type="text" name="title" id="title" placeholder="Ge uppgiften en titel" value={title} required
                         onChange={(e) => setTitle(e.target.value)} />
 
                     <br />
                     <label htmlFor="description">Beskrivning:</label>
                     <br />
-                    <textarea name="description" placeholder="Ge uppgiften en beskrivning" value={description}
+                    <textarea name="description" id="description" placeholder="Ge uppgiften en beskrivning" value={description}
                         onChange={(e) => setDescription(e.target.value)} />
 
                     <br />
@@ -81,6 +94,9 @@ const NewTodoForm = ({ onAdd }: { onAdd: (todo: TodoInterface) => void }) => {
                         <option>Pågående</option>
                         <option>Avklarad</option>
                     </select>
+                    <br />
+                    { /* Eventuella felmeddelanden. */}
+                    {error && <p className="error">{error}</p>}
                     <br />
                     <button type="submit">Lägg till</button>
                 </form>
