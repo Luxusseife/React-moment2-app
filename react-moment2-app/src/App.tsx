@@ -79,6 +79,10 @@ function App() {
 
         <NewTodoForm onAdd={fetchData} />
 
+        { /* Felmeddelanden. */}
+        {loading && <p>Laddar att göra-uppgifter...</p>}
+        {error && <p>{error}</p>}
+
         <div className="todos">
           {
             // Loopar igenom att göra-uppgifter och skriver ut enligt return i Todo-komponenten.
@@ -87,10 +91,6 @@ function App() {
             ))
           }
         </div>
-
-        { /* Felmeddelanden. */}
-        {loading && <p>Laddar att göra-uppgifter...</p>}
-        {error && <p>{error}</p>}
 
       </main>
       <Footer />
