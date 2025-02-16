@@ -34,7 +34,8 @@
 }
 
 /* Utseende på select-box och knapp. */
-.status-delete-form select, button {
+.status-delete-form select,
+button {
     height: 30px;
     width: 120px;
     border-radius: 5px;
@@ -46,4 +47,13 @@
     border: none;
     font-weight: bold;
     background-color: #f35e5e;
+}
+
+/* Mediaquery för todo-listan. */
+@media (min-width: 1025px) {
+
+    /* Sektioner med att-göra uppgifter. Flexad kolumn. */
+    .todo-section {
+        max-width: 400px;
+    }
 }

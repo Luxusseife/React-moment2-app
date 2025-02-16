@@ -36,3 +36,17 @@ p:not(section p) {
     max-width: 1000px;
     margin: 0 auto;
 }
+
+/* Mediaquery för todo-lista. */
+@media (min-width: 1025px) {
+
+    .todos {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 1025px;
+        margin: 0 auto;
+    }
+}
